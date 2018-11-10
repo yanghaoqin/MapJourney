@@ -5,6 +5,7 @@ html {
 }
 body {
   margin: 0;
+  background-image: url(https://images.unsplash.com/photo-1528895484511-6ca767004933?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6a2e10955d7c5a9d61f87414d086d58c&auto=format&fit=crop&w=1950&q=80)
 }
 article,
 aside,
@@ -227,12 +228,12 @@ h1 {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-  color: inherit;
+  color: rgb(203, 212, 236);
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: bold;
   text-rendering: optimizeLegibility;
-  font-size: 2.25rem;
+  font-size: 4rem;
   line-height: 1.1;
 }
 h2 {

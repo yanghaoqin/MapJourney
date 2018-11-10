@@ -1,25 +1,40 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import Button from "@material-ui/core/Button";
-
 import Layout from '../components/layout'
 import Image from '../components/image'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-const IndexPage = () => (
-  <Layout>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
-      <Image />
-    </div>
+import Map from '../components/map'
+
+function IndexPage() {
+  return (
+    <Layout>
+      <Router>
+        <div>
+  
+          <h1>Start planning your journey now</h1>
+
+          <Button variant="contained" color="primary">
+            <Link to="/about">Click Me~</Link>
+          </Button>
+
+          <hr />
+
+          <Route path="/about" component={About} />
+        </div>
+      </Router>
+    </Layout>
+  
+  )
+}
+
+function About() {
+  return (
     <div>
-    <Button variant="contained" color="secondary">
-      Start Planning Your Journey!
-    </Button>
+      <Map></Map>
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+  );
+}
+
 
 export default IndexPage

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import Button from '@material-ui/core/Button'
 
 const Header = ({ siteTitle }) => (
   <div
@@ -25,6 +26,26 @@ const Header = ({ siteTitle }) => (
         >
           {siteTitle}
         </Link>
+        
+        <Button>
+          <Link to="/about"
+          style={{
+            textDecoration: 'none',
+          }}>
+          About
+          </Link>
+        </Button>
+        
+        <Button>
+          <Link to="/contact"
+          style={{
+            textDecoration: 'none',
+          }}>
+          Contact
+          </Link>
+        </Button>
+        
+        
       </h1>
     </div>
   </div>

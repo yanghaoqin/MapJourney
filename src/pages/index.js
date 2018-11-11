@@ -33,31 +33,45 @@ const styles = theme => ({
 
 
 class IndexPage extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {type: ""}
+    this.switchToMap = this.switchToMap.bind(this)
+    this.switchToSearch = this.switchToSearch.bind(this)
+  }
+
+  switchToMap() {
+    this.setState({ type: "map" })
+  }
+
+  switchToSearch() {
+    this.setState({ type: "search" })
+  }
+
   render() {
     const { classes } = this.props
     return (
       <Layout>
         <Router>
-          {/* <MuiThemeProvider theme={myTheme}> */}
           <div>
 
             <h1>Start planning your journey. Now.</h1>
 
-            <Button variant="contained" color="primary" className={classes.type_button} component={Link} to="/map">
+            <Button variant="contained" color="primary" className={classes.type_button} onClick={this.switchToMap}>
               View Map
             </Button>
 
-            <Button variant="contained" color="primary" className={classes.type_button} component={Link} to="/searchBox">
+            <Button variant="contained" color="primary" className={classes.type_button} onClick={this.switchToSearch}>
               Search
             </Button>
 
-            <Route path='/map' component={MapWithControlledZoom} />
-            <Route path='/searchBox' component={SearchBox} />
+            {this.state.type === "map" ? <MapWithControlledZoom></MapWithControlledZoom> : null}
+            {this.state.type === "search" ? <SearchBox></SearchBox> : null}
 
             <PlaceCard></PlaceCard>
 
-          </div>
-          {/* </MuiThemeProvider> */}
+          </div >
 
         </Router>
       </Layout>

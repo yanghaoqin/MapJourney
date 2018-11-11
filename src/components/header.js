@@ -17,17 +17,19 @@ const styles = theme => ({
   },
 
   root:{
-    margin: 0
+      margin: 0,
   },
 
   bigheader:{
     color: 'white',
     textDecoration: 'none',
-    marginRight: '1rem',
+    marginRight: theme.spacing.unit,
   },
 
-  buttons:{
-    textDecoration: 'none',
+  link: {
+    margin: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    marginLeft: theme.spacing.unit,
   }
 
 });
@@ -44,15 +46,15 @@ class Header extends React.Component {
               Journey.map
             </Link>
             
-            <Button variant='outlined'>
-              <Link to="/about" className={classes.buttons}>
+            <Button variant='outlined' className={classes.link}>
+              <Link to="/about" style={{ textDecoration: 'none' }}>
               About
               </Link>
             </Button>
-            
-            <Button variant='outlined'> 
-              <Link to="/contact" className={classes.buttons}>
-              Contact
+          
+            <Button variant='outlined' className={classes.link}> 
+              <Link to="/myList" style={{ textDecoration: 'none' }}>
+              List
               </Link>
             </Button>
           </h1>

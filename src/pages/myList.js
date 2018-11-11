@@ -12,7 +12,7 @@ const styles = theme => ({
   }
 });
 
-class SelectedListItem extends React.Component {
+class myList extends React.Component {
   render() {
     const { classes } = this.props;
 
@@ -40,4 +40,4 @@ class SelectedListItem extends React.Component {
   }
 }
 
-export default withStyles(styles)(SelectedListItem);
+export default withStyles(styles)(myList);

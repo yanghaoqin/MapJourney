@@ -1,57 +1,75 @@
 import React from 'react'
-import Button from "@material-ui/core/Button";
+import { Component } from "react"
+import PropTypes from "prop-types"
 import Layout from '../components/layout'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import { withStyles } from '@material-ui/core';
+import Button from "@material-ui/core/Button";
+import { orange } from "@material-ui/core/colors"
+import { createMuiTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider } from "@material-ui/core/styles"
 
 import MapWithControlledZoom from "../components/map1"
 import SearchBox from '../components/searchBox'
 import PlaceCard from "../components/placeCard"
 
-function IndexPage() {
-  return (
-    <Layout>
-      <Router>
-        <div>
+// const myTheme = createMuiTheme({
+//   palette: {
+//     primary: {
+//       main: "#FB8C00",
+//     },
+//     secondary: {
+//       orange: "#3949AB"
+//     }
+//   }
+// })
 
-          <div class="split left">
-          <div class="centered">
+const styles = theme => ({
+  type_button: {
+    margin: theme.spacing.unit,
+  },
+})
+
+
+class IndexPage extends Component {
+  render() {
+    const { classes } = this.props
+    return (
+      <Layout>
+        <Router>
+          {/* <MuiThemeProvider theme={myTheme}> */}
+          <div>
 
             <h1>Start planning your journey. Now.</h1>
 
-            <Button variant="contained" color="primary">
-              <Link to="/map">Show Map</Link>
+            <Button variant="contained" color="primary" className={classes.type_button} component={Link} to="/map">
+              View Map
             </Button>
 
-            <Button variant="contained" color="primary">
-              <Link to="/searchBox">Search</Link>
+            <Button variant="contained" color="primary" className={classes.type_button} component={Link} to="/searchBox">
+              Search
             </Button>
 
             <Route path='/map' component={MapWithControlledZoom} />
             <Route path='/searchBox' component={SearchBox} />
 
-          </div>
-          </div>
-
-          <div class="split right">
-          <div class="centered">
-
             <PlaceCard></PlaceCard>
 
           </div>
-          </div>
+          {/* </MuiThemeProvider> */}
 
-
-        </div>
-
-      </Router>
-    </Layout>
-
-  )
+        </Router>
+      </Layout>
+    )
+  }
 }
 
+IndexPage.propTypes = {
+  classes: PropTypes.object.isRequired
+}
 
-
-export default IndexPage
+export default withStyles(styles)(IndexPage);
 
 
 

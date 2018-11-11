@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
   card: {
-    maxWidth: 300,
+    maxWidth: 400,
     maxHeight: 200
   },
   media: {
@@ -28,7 +28,7 @@ function PlaceCard(props) {
         <CardMedia
           component="img"
           className={classes.media}
-          height="50"
+          height="30"
           image="src/images/barcelona.jpeg"  
         />
         <CardContent>

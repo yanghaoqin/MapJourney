@@ -6,7 +6,7 @@ const {
 } = require("react-google-maps");
 const { StandaloneSearchBox } = require("react-google-maps/lib/components/places/StandaloneSearchBox");
 
-const searchBox = compose(
+const SearchBox = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA9DR4FHpXg_MmXHfsy6ozebdElbFm6qXk&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
@@ -41,7 +41,7 @@ const searchBox = compose(
     >
       <input
         type="text"
-        placeholder="Customized your placeholder"
+        placeholder="Where do you want to go"
         style={{
           boxSizing: `border-box`,
           border: `1px solid transparent`,
@@ -67,4 +67,4 @@ const searchBox = compose(
   </div>
 );
 
-export default searchBox
+export default SearchBox

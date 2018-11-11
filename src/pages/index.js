@@ -57,7 +57,7 @@ class IndexPage extends Component {
           <div>
 
             <h1>Start planning your journey. Now.</h1>
-
+            
             <Button variant="contained" color="primary" className={classes.type_button} onClick={this.switchToMap}>
               View Map
             </Button>
@@ -66,8 +66,11 @@ class IndexPage extends Component {
               Search
             </Button>
 
+            {/* <Route path='/map' component={MapWithControlledZoom} />
+            <Route path='/searchBox' component={SearchBox} /> */}
+
             {this.state.type === "map" ? <MapWithControlledZoom></MapWithControlledZoom> : null}
-            {this.state.type === "search" ? <SearchBox></SearchBox> : null}
+            {this.state.type === "search" ? <div> <SearchBox></SearchBox> <MapWithControlledZoom></MapWithControlledZoom> </div>: null}
 
             <PlaceCard></PlaceCard>
 

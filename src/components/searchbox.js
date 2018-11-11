@@ -1,9 +1,6 @@
 import React from 'react'
 import Map from './map'
 
-var latitude={}
-var longitude={}
-
 const { compose, withProps, lifecycle } = require("recompose");
 const {
   withScriptjs,
@@ -63,7 +60,7 @@ const StandAloneSearchBox = compose(
     <ol>
       {props.places.map(({ geometry: { location }, latitude=location.lat(), longitude=location.lng()}) =>
         <h2>
-          ({latitude}, {longitude})
+          {latitude}, {longitude}
         </h2>
       )}
         <Map />

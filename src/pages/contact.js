@@ -1,20 +1,43 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import Button from '@material-ui/core/Button'
+import React from "react";
+import { withStyles } from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 
-const Contact = () => (
-    <div>
-        Contact page
-    <Button>
-        <Link to="/"
-         style={{
-            textDecoration: 'none',
-          }}>
-        Home
-        </Link>
-    </Button>
+const styles = theme => ({
+  root: {
+    width: "100%",
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper
+  }
+});
 
-    </div>
-)
+class SelectedListItem extends React.Component {
+  render() {
+    const { classes } = this.props;
 
-export default Contact
+    return (
+      <div className={classes.root}>
+        <List component="nav">
+          <ListItem button>
+            <ListItemText primary="Inbox" />
+          </ListItem>
+
+          <ListItem button>
+            <ListItemText primary="Drafts" />
+          </ListItem>
+
+          <ListItem button>
+            <ListItemText primary="Trash" />
+          </ListItem>
+
+          <ListItem button>
+            <ListItemText primary="Spam" />
+          </ListItem>
+        </List>
+      </div>
+    );
+  }
+}
+
+export default withStyles(styles)(SelectedListItem);

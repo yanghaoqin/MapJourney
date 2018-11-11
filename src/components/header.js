@@ -22,12 +22,13 @@ const Header = ({ siteTitle }) => (
           style={{
             color: 'white',
             textDecoration: 'none',
+            marginRight: '1rem',
           }}
         >
           {siteTitle}
         </Link>
         
-        <Button>
+        <Button variant='outlined'>
           <Link to="/about"
           style={{
             textDecoration: 'none',
@@ -36,7 +37,7 @@ const Header = ({ siteTitle }) => (
           </Link>
         </Button>
         
-        <Button>
+        <Button variant='outlined'> 
           <Link to="/contact"
           style={{
             textDecoration: 'none',

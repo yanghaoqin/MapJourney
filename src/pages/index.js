@@ -1,40 +1,42 @@
 import React from 'react'
 import Button from "@material-ui/core/Button";
 import Layout from '../components/layout'
-import Image from '../components/image'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Map from '../components/map'
+import Map from '../components/map'  
+import searchBox from  '../components/searchBox'
 
 function IndexPage() {
   return (
     <Layout>
       <Router>
+       
         <div>
-  
-          <h1>Start planning your journey now</h1>
+    
+          <h1>Start your journey now</h1>
 
           <Button variant="contained" color="primary">
-            <Link to="/about">Click Me~</Link>
+            <Link to="/map">Show Map</Link>
+          </Button> 
+
+          <Button variant="contained" color="primary">
+            <Link to="/searchBox">Search</Link>
           </Button>
 
-          <hr />
-
-          <Route path="/about" component={About} />
+          <Route path='/map' component={Map} />
+          <Route path='/searchBox' component={searchBox} />
+          
         </div>
+
       </Router>
     </Layout>
   
   )
 }
 
-function About() {
-  return (
-    <div>
-      <Map></Map>
-    </div>
-  );
-}
 
 
 export default IndexPage
+
+
+

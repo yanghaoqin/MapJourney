@@ -56,14 +56,12 @@ const searchBox = compose(
         }}
       />
     </StandaloneSearchBox>
-    <ol color='green'>
-      {props.places.map(({ place_id, formatted_address, geometry: { location } }) =>
-        <li key={place_id}>
-          {formatted_address}
-          {" @ "}
-          <br />
+    <ol>
+      {props.places.map(({geometry: { location } }) =>
+        <h1>
+  
           ({location.lat()}, {location.lng()})
-        </li>
+        </h1>
       )}
     </ol>
   </div>

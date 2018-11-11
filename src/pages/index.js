@@ -3,35 +3,49 @@ import Button from "@material-ui/core/Button";
 import Layout from '../components/layout'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Map from '../components/map'  
 import MapWithControlledZoom from "../components/map1"
-import searchBox from  '../components/searchBox'
+import SearchBox from '../components/searchBox'
+import PlaceCard from "../components/placeCard"
 
 function IndexPage() {
   return (
     <Layout>
       <Router>
-       
         <div>
-    
-          <h1>Start your journey now</h1>
 
-          <Button variant="contained" color="primary">
-            <Link to="/map">Show Map</Link> 
-          </Button> 
+          <div class="split left">
+          <div class="centered">
 
-          <Button variant="contained" color="primary">
-            <Link to="/searchBox">Search</Link>
-          </Button>
+            <h1>Start planning your journey. Now.</h1>
 
-          <Route path='/map' component={MapWithControlledZoom} />
-          <Route path='/searchBox' component={searchBox} />
-          
+            <Button variant="contained" color="primary">
+              <Link to="/map">Show Map</Link>
+            </Button>
+
+            <Button variant="contained" color="primary">
+              <Link to="/searchBox">Search</Link>
+            </Button>
+
+            <Route path='/map' component={MapWithControlledZoom} />
+            <Route path='/searchBox' component={SearchBox} />
+
+          </div>
+          </div>
+
+          <div class="split right">
+          <div class="centered">
+
+            <PlaceCard></PlaceCard>
+
+          </div>
+          </div>
+
+
         </div>
 
       </Router>
     </Layout>
-  
+
   )
 }
 

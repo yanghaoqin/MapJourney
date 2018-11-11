@@ -15,9 +15,9 @@ const {
 const MapWithControlledZoom = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
-    loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `800px` }} />,
-    mapElement: <div style={{ height: `100%` }} />,
+    loadingElement: <div style={{ height: "80%" }} />,
+    containerElement: <div style={{ height: "800px", width: "800px" }} />,
+    mapElement: <div style={{ height: "90%" }} />,
   }),
   withState('zoom', 'onZoomChange', 12),
   withHandlers(() => {
@@ -37,9 +37,10 @@ const MapWithControlledZoom = compose(
   withScriptjs,
   withGoogleMap
 )(props =>
+
   <div>
 
-    <Link to="/searchBox">Search</Link>
+    {/* <Link to="/searchBox">Search</Link> */}
 
     <GoogleMap
       defaultCenter={{ lat: 45.499980, lng: -73.556590 }}
@@ -60,7 +61,7 @@ const MapWithControlledZoom = compose(
         </InfoWindow>
       </Marker>
 
-<Marker
+      <Marker
         position={{ lat: 46.509980, lng: -73.556590 }}
         onClick={props.onToggleOpen}
       >
@@ -72,7 +73,6 @@ const MapWithControlledZoom = compose(
           </div>
         </InfoWindow>
       </Marker>
-      
 
     </GoogleMap>
 

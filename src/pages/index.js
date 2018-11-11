@@ -1,57 +1,92 @@
-import React, { Component } from 'react'
-import Button from "@material-ui/core/Button";
+import React from 'react'
+import { Component } from "react"
+import PropTypes from "prop-types"
 import Layout from '../components/layout'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import StandAloneSearchBox from '../components/searchbox'
-import Map from '../components/map'
+
+import { withStyles } from '@material-ui/core';
+import Button from "@material-ui/core/Button";
+import { orange } from "@material-ui/core/colors"
+import { createMuiTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider } from "@material-ui/core/styles"
+
+import MapWithControlledZoom from "../components/map1"
+import SearchBox from '../components/searchBox'
+import PlaceCard from "../components/placeCard"
+
+// const myTheme = createMuiTheme({
+//   palette: {
+//     primary: {
+//       main: "#FB8C00",
+//     },
+//     secondary: {
+//       orange: "#3949AB"
+//     }
+//   }
+// })
 
 const styles = theme => ({
-  button: {
+  type_button: {
     margin: theme.spacing.unit,
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-  }
+  },
+})
 
-});
 
 class IndexPage extends Component {
-  render () {
-    const { classes } = this.props;
-    return(
-    <Layout>
-      <Router>
-        <div>
-  
-          <h1>Start planning your journey now</h1>
 
-          <Button 
-          variant="contained" 
-          color="primary"
-          className={classes.button}
-          >
-            <Link to="/searchbox" style={{ textDecoration: 'none' }}>Search</Link>
-          </Button>
-         
-          <Button 
-          variant="contained" 
-          color="primary"
-          className={classes.button}
-          >
-            <Link to="/map" style={{ textDecoration: 'none' }}>Map</Link>
-          </Button>
-          <Route path='/map' component={Map} />
-          <Route path='/searchbox' component={StandAloneSearchBox} />
-        </div>
+  constructor(props) {
+    super(props)
+    this.state = {type: ""}
+    this.switchToMap = this.switchToMap.bind(this)
+    this.switchToSearch = this.switchToSearch.bind(this)
+  }
+
+  switchToMap() {
+    this.setState({ type: "map" })
+  }
+
+  switchToSearch() {
+    this.setState({ type: "search" })
+  }
+
+  render() {
+    const { classes } = this.props
+    return (
+      <Layout>
+        <Router>
+          <div>
+
+            <h1>Start planning your journey. Now.</h1>
+            
+            <Button variant="contained" color="primary" className={classes.type_button} onClick={this.switchToMap}>
+              View Map
+            </Button>
+
+            <Button variant="contained" color="primary" className={classes.type_button} onClick={this.switchToSearch}>
+              Search
+            </Button>
+
+            {/* <Route path='/map' component={MapWithControlledZoom} />
+            <Route path='/searchBox' component={SearchBox} /> */}
+
+            {this.state.type === "map" ? <MapWithControlledZoom></MapWithControlledZoom> : null}
+            {this.state.type === "search" ? <div> <SearchBox></SearchBox> <MapWithControlledZoom></MapWithControlledZoom> </div>: null}
+
+            <PlaceCard></PlaceCard>
+
+          </div >
+
         </Router>
-    </Layout>
-  
-    )}
+      </Layout>
+    )
+  }
 }
-
 
 IndexPage.propTypes = {
   classes: PropTypes.object.isRequired
 }
-export default withStyles(styles)(IndexPage)
+
+export default withStyles(styles)(IndexPage);
+
+
+

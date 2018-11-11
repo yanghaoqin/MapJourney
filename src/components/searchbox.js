@@ -1,5 +1,4 @@
 import React from 'react'
-import Map from './map'
 
 const { compose, withProps, lifecycle } = require("recompose");
 const {
@@ -7,7 +6,7 @@ const {
 } = require("react-google-maps");
 const { StandaloneSearchBox } = require("react-google-maps/lib/components/places/StandaloneSearchBox");
 
-const StandAloneSearchBox = compose(
+const SearchBox = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyA9DR4FHpXg_MmXHfsy6ozebdElbFm6qXk&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
@@ -32,7 +31,7 @@ const StandAloneSearchBox = compose(
       })
     },
   }),
-  withScriptjs  
+  withScriptjs
 )(props =>
   <div data-standalone-searchbox="">
     <StandaloneSearchBox
@@ -42,7 +41,7 @@ const StandAloneSearchBox = compose(
     >
       <input
         type="text"
-        placeholder="Customized your placeholder"
+        placeholder="Where do you want to go"
         style={{
           boxSizing: `border-box`,
           border: `1px solid transparent`,
@@ -58,14 +57,14 @@ const StandAloneSearchBox = compose(
       />
     </StandaloneSearchBox>
     <ol>
-      {props.places.map(({ geometry: { location }, latitude=location.lat(), longitude=location.lng()}) =>
-        <h2>
-          {latitude}, {longitude}
-        </h2>
+      {props.places.map(({geometry: { location } }) =>
+        <h1>
+  
+          ({location.lat()}, {location.lng()})
+        </h1>
       )}
-        <Map />
     </ol>
   </div>
 );
 
-export default StandAloneSearchBox
+export default SearchBox

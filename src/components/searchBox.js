@@ -31,7 +31,7 @@ const searchBox = compose(
       })
     },
   }),
-  withScriptjs  
+  withScriptjs
 )(props =>
   <div data-standalone-searchbox="">
     <StandaloneSearchBox
@@ -56,11 +56,12 @@ const searchBox = compose(
         }}
       />
     </StandaloneSearchBox>
-    <ol>
+    <ol color='green'>
       {props.places.map(({ place_id, formatted_address, geometry: { location } }) =>
         <li key={place_id}>
           {formatted_address}
-          {" at "}
+          {" @ "}
+          <br />
           ({location.lat()}, {location.lng()})
         </li>
       )}

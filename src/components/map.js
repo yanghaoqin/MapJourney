@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
+import StandAloneSearchBox from './searchbox'
 
 class Map extends Component {
     static defaultProps = {
@@ -15,6 +16,7 @@ class Map extends Component {
             // Important! Always set the container height explicitly
             <div style={{ height: '100vh', width: '100%' }}>
 
+                <StandAloneSearchBox />
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: "AIzaSyA9DR4FHpXg_MmXHfsy6ozebdElbFm6qXk"}}
                     defaultCenter={this.props.center}

@@ -1,5 +1,4 @@
 import React from 'react'
-import GoogleMapReact from 'google-map-react'
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
@@ -60,12 +59,10 @@ const StandAloneSearchBox = compose(
       />
     </StandaloneSearchBox>
     <ol>
-      {props.places.map(({ place_id, formatted_address, geometry: { location } }) =>
-        <li key={place_id}>
-          {formatted_address}
-          {" at "}
+      {props.places.map(({ geometry: { location } }) =>
+        <h2>
           ({location.lat()}, {location.lng()})
-        </li>
+        </h2>
       )}
     </ol>
   </div>

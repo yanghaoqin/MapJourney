@@ -1,6 +1,8 @@
 import React from 'react'
+import Map from './map'
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+var latitude={}
+var longitude={}
 
 const { compose, withProps, lifecycle } = require("recompose");
 const {
@@ -59,11 +61,12 @@ const StandAloneSearchBox = compose(
       />
     </StandaloneSearchBox>
     <ol>
-      {props.places.map(({ geometry: { location } }) =>
+      {props.places.map(({ geometry: { location }, latitude=location.lat(), longitude=location.lng()}) =>
         <h2>
-          ({location.lat()}, {location.lng()})
+          ({latitude}, {longitude})
         </h2>
       )}
+        <Map />
     </ol>
   </div>
 );

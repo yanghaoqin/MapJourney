@@ -1,1 +1,1 @@
-A naive React.js web app
+A naïve React.js web app
